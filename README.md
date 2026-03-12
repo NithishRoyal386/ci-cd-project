@@ -1,5 +1,4 @@
 # ci-cd-project
-ci/cd pipe line automation on aws
 
 **AWS CI/CD Pipeline Project**
 
