@@ -1,14 +1,11 @@
-cat > buildspec.yml << 'EOF'
 version: 0.2
 phases:
   install:
     commands:
-      - echo Installing dependencies...
+      - echo Installing...
   build:
     commands:
       - echo Build completed
 artifacts:
   files:
     - '**/*'
-EOF
-
