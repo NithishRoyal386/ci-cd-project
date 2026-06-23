@@ -1,12 +1,12 @@
+cat > appspec.yml << 'EOF'
 version: 0.0
 os: linux
-
 files:
   - source: /
     destination: /var/www/html
-
 hooks:
-  ApplicationStart:
-    - location: scripts/start.sh
+  AfterInstall:
+    - location: scripts/install.sh
       timeout: 300
       runas: root
+EOF
