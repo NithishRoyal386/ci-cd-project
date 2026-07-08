@@ -1,11 +1,24 @@
 version: 0.2
+
 phases:
   install:
     commands:
-      - echo Installing...
+      - echo "Installing Trivy..."
+      - wget https://github.com/aquasecurity/trivy/releases/download/v0.72.0/trivy_0.72.0_Linux-64bit.deb
+      - sudo dpkg -i trivy_0.72.0_Linux-64bit.deb
+
+  pre_build:
+    commands:
+      - echo "Building Docker image..."
+      - docker build -t myapp:latest .
+
   build:
     commands:
-      - echo Build completed
+      - echo "Running Trivy security scan..."
+      - trivy image --exit-code 1 --severity HIGH,CRITICAL --scanners vuln,secret,misconfig myapp:latest
+      - echo "Trivy scan passed. Proceeding with build..."
+      - echo "Build completed"
+
 artifacts:
   files:
     - '**/*'
