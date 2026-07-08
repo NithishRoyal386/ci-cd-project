@@ -40,3 +40,4 @@ COPY . .
 
 # 12. Running with unnecessary elevated capabilities implied via privileged use later
 CMD ["sudo", "./some-script.sh"]
+
